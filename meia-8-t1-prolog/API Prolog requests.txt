@@ -1,0 +1,25 @@
+POST: /cria_factos
+body: 
+{
+	"velocity": "string",
+	"rpm": "string"
+	"acceleration": "string"
+	"pitch": "string"
+	"n": "string"
+}
+response: Retorna a string com os factos que criou
+"facto(1,velocidade(meu_veiculo,10)). facto(2,rpm(meu_veiculo,1000)). facto(3,acceleration(meu_veiculo,0)). facto(4,pitch(meu_veiculo,0.5)). ultimo_facto(4)."
+
+GET: /arranca_motor
+response: Retorna JSON com o facto criado
+{
+	"facto": "Foi concluído o facto nº 5 -> gear(meu_veiculo,2)"
+}
+
+GET: /como?nFacto=n
+parametro: nFacto (number)
+response: Retorna JSON com a explicação de como o facto foi criado
+{
+    "como": "Conclui o facto nº 5 -> gear(meu_veiculo,2)\n pela regra 8\n por se ter verificado que:\n Factos:\nO facto nº 1 -> velocidade(meu_veiculo,10) é verdadeiro\nO facto nº 2 -> rpm(meu_veiculo,1000) é verdadeiro\nO facto nº 1 -> velocidade(meu_veiculo,10) é verdadeiro\n ********************************************************\n Explicação:\nO facto nº 1 -> velocidade(meu_veiculo,10) foi conhecido inicialmente\n********************************************************O facto nº 2 -> rpm(meu_veiculo,1000) foi conhecido inicialmente\n********************************************************O facto nº 1 -> velocidade(meu_veiculo,10) foi conhecido inicialmente\n****************************************************************************************************************\n"
+}
+

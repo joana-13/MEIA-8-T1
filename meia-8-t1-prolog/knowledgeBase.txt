@@ -1,0 +1,157 @@
+:-dynamic facto/2,ultimo_facto/1,ultima_regra/1.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metaconhecimento
+
+facto_dispara_regras(velocidade(_, _), [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]).
+facto_dispara_regras(rpm(_, _), [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]).
+facto_dispara_regras(acceleration(_, _), [9,13,14,15,16,19,20,21,23,24,25,26,27,29,30,31]).
+facto_dispara_regras(pitch(_, _), [5,31]).
+facto_dispara_regras(gear(_, _), [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%ultimo_facto(4).
+%ultima_regra(31).
+
+regra 1
+        se [avalia(velocidade(Veiculo,<,14.726)) e avalia(rpm(Veiculo,>,1198.55)) e avalia(velocidade(Veiculo,>,0))]
+        entao [cria_facto(gear(Veiculo,1))].
+
+regra 2
+        se [avalia(velocidade(Veiculo,<,9.392)) e avalia(rpm(Veiculo,<,1198.56)) e avalia(velocidade(Veiculo,>,0))]
+        entao [cria_facto(gear(Veiculo,1))].
+
+regra 3
+        se [avalia(velocidade(Veiculo,<,20.014)) e avalia(rpm(Veiculo,>,1642.55)) e avalia(velocidade(Veiculo,>,14.726))]
+        entao [cria_facto(gear(Veiculo,1))].
+
+regra 4
+        se [avalia(velocidade(Veiculo,<,14.726)) e avalia(rpm(Veiculo,>,1200)) e avalia(velocidade(Veiculo,>,14.327))]
+        entao [cria_facto(gear(Veiculo,1))].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+regra 5
+        se [avalia(velocidade(Veiculo,<,30.91)) e avalia(rpm(Veiculo,>,1642.55)) e avalia(velocidade(Veiculo,>,14.726))]
+        entao [cria_facto(gear(Veiculo,2))].
+
+regra 6
+        se [avalia(velocidade(Veiculo,>,14.726)) e avalia(rpm(Veiculo,<,1642.56)) e avalia(velocidade(Veiculo,<,20.978))]
+        entao [cria_facto(gear(Veiculo,2))].
+
+regra 7
+        se [avalia(velocidade(Veiculo,>,30.9)) e avalia(rpm(Veiculo,>,1850.35)) e avalia(velocidade(Veiculo,<,48.819))]
+        entao [cria_facto(gear(Veiculo,2))].
+
+regra 8
+        se [avalia(velocidade(Veiculo,>,9.391)) e avalia(rpm(Veiculo,<,1198.56)) e avalia(velocidade(Veiculo,<,14.727))]
+        entao [cria_facto(gear(Veiculo,2))].
+
+regra 9
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(rpm(Veiculo,>,4185.1)) e avalia(acceleration(Veiculo,>,0.782))]
+        entao [cria_facto(gear(Veiculo,2))].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+regra 10
+        se [avalia(velocidade(Veiculo,>,30.9)) e avalia(rpm(Veiculo,>,1850.35)) e avalia(velocidade(Veiculo,<,48.819)) e avalia(rpm(Veiculo,<,2459.06))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+regra 11
+        se [avalia(velocidade(Veiculo,<,30.91)) e avalia(rpm(Veiculo,<,1642.56)) e avalia(velocidade(Veiculo,>,20.977))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+regra 12
+        se [avalia(velocidade(Veiculo,>,30.9)) e avalia(rpm(Veiculo,<,1850.36)) e avalia(velocidade(Veiculo,<,35.339)) e avalia(rpm(Veiculo,>,1471.7))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+regra 13
+        se [avalia(velocidade(Veiculo,<,54.960)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(rpm(Veiculo,>,1850.35)) e avalia(velocidade(Veiculo,>,30.9))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+regra 14
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,>,0.782)) e avalia(acceleration(Veiculo,<,2.01)) e avalia(rpm(Veiculo,>,2854.95))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+regra 15
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.7821)) e avalia(velocidade(Veiculo,<,61.943)) e avalia(rpm(Veiculo,>,1961.25))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+regra 16
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,>,0.782)) e avalia(rpm(Veiculo,<,4185.12))]
+        entao [cria_facto(gear(Veiculo,3))].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+regra 17
+        se [avalia(velocidade(Veiculo,<,49.625)) e avalia(rpm(Veiculo,<,1850.36)) e avalia(velocidade(Veiculo,>,30.9))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 18
+        se [avalia(velocidade(Veiculo,>,30.9)) e avalia(rpm(Veiculo,<,2329.65)) e avalia(velocidade(Veiculo,<,54.960)) e avalia(rpm(Veiculo,>,1850.35))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 19
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(velocidade(Veiculo,<,48.819)) e avalia(rpm(Veiculo,>,2314.45)) e avalia(velocidade(Veiculo,<,76.801))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 20
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(velocidade(Veiculo,<,61.943)) e avalia(rpm(Veiculo,>,1961.25)) e avalia(rpm(Veiculo,<,2594.86))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 21
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,1.337)) e avalia(acceleration(Veiculo,>,0.782)) e avalia(rpm(Veiculo,>,2185.45)) e avalia(velocidade(Veiculo,<,87.969))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 22
+        se [avalia(velocidade(Veiculo,>,30.9)) e avalia(rpm(Veiculo,<,1850.36)) e avalia(velocidade(Veiculo,<,35.338)) e avalia(rpm(Veiculo,<,1471.71))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 23
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,>,0.782)) e avalia(acceleration(Veiculo,<,1.337)) e avalia(velocidade(Veiculo,<,58.366)) e avalia(rpm(Veiculo,<,2185.46))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+regra 24
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(rpm(Veiculo,<,2854.96)) e avalia(acceleration(Veiculo,<,0.782)) e avalia(acceleration(Veiculo,<,2.01))]
+        entao [cria_facto(gear(Veiculo,4))].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+regra 25
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(rpm(Veiculo,<,2314.46)) e avalia(pitch(Veiculo,<,5.593))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+regra 26
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(rpm(Veiculo,>,2314.45))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+regra 27
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(velocidade(Veiculo,<,61.944)) e avalia(rpm(Veiculo,<,1961.26))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+regra 28
+        se [avalia(velocidade(Veiculo,>,49.624)) e avalia(rpm(Veiculo,<,1850.36)) e avalia(velocidade(Veiculo,<,54.960))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+regra 29
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,>,0.782)) e avalia(acceleration(Veiculo,<,1.337)) e avalia(rpm(Veiculo,>,2185.45))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+regra 30
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,>,0.782)) e avalia(acceleration(Veiculo,<,1.336)) e avalia(rpm(Veiculo,<,2185.46))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+regra 31
+        se [avalia(velocidade(Veiculo,>,54.959)) e avalia(acceleration(Veiculo,<,0.783)) e avalia(rpm(Veiculo,<,2314.45)) e avalia(pitch(Veiculo,>,5.592))]
+        entao [cria_facto(gear(Veiculo,5))].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%facto(1,velocidade(meu_veiculo,10)).
+%facto(2,rpm(meu_veiculo,1000)).
+%facto(3,acceleration(meu_veiculo,0)).
+%facto(4,pitch(meu_veiculo,0.5)).
+
+        
