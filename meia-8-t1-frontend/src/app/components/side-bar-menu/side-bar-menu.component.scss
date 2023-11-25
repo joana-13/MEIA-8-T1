@@ -1,0 +1,104 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.mat-sidenav-content{
+    height: calc(100vh - 65px);
+  }
+  
+  .sidenav {
+    width: 250px;
+    border-right: none;
+    border-radius: 10px;
+    height: 10%;
+    color: blue;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    margin-left: 32px;
+    margin-top: 20px;
+    margin-right: 1px;
+    margin-right: 1px;
+    border-radius: 10px;
+  }
+  
+  .content-base {
+    margin-left: 32px;
+    margin-top: 20px;
+    margin-right: 1px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .distance-right{
+    margin-right: 32px;
+  }
+
+  .mat-nav-list a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .mat-nav-list a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #111;
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .sidenav-container {
+    margin-bottom: 300px;
+  }
+  
+  .sidenav {
+    width: 250px;
+    background: #B0DBF1;
+    font-size: auto;
+    color: #fff;
+    margin-top: 20px;
+    height: calc(100vh - 200px);
+  }
+  
+  .mat-nav-list a {
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .mat-nav-list a:hover {
+    background: rgba(255, 255, 255, 0.1); /* Light background on hover */
+  }
+  
+  .content-wrapper {
+    transition: margin 0.3s ease; /* Smooth transition for content area */
+  }
+  
+  .sidenav-container.mat-drawer-transition {
+    transition: margin 0.3s ease; /* Smooth transition for sidenav */
+  }
+  
+  /* Adjust content area margin when sidenav is opened */
+  .mat-drawer-opened .content-wrapper {
+    margin-left: 250px; /* Width of the sidenav */
+  }
+  
+  /* Optional: Add box shadow to the sidenav */
+  .sidenav {
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .text-label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}

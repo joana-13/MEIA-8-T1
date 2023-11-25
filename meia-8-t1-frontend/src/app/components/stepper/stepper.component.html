@@ -1,0 +1,116 @@
+ <mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!"
+    linear>
+    <mat-step label="Gear Prediction Request" class = "mat-step">
+        <br>
+        <br>
+        <br>
+        <p>Make Request?</p>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="formGroup" label="Input Information">
+      <form [formGroup]="formGroup">
+        <br>
+        <br>
+        <br>
+        <mat-form-field>
+          <mat-label class="mat-label">Velocity</mat-label>
+          <input matInput formControlName="firstValue" name="inputData.velocity" required>
+          <mat-error *ngIf="formGroup.get('firstValue')?.hasError('required')">This field is required</mat-error>
+          <mat-error *ngIf="formGroup.get('firstValue')?.hasError('min')">Value must be positive</mat-error>
+          <mat-error *ngIf="formGroup.get('firstValue')?.hasError('pattern')">Value must be a number</mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <mat-form-field>
+            <mat-label class="mat-label">RPM</mat-label>
+            <input matInput formControlName="secondValue" name="inputData.rpm" required>
+            <mat-error *ngIf="formGroup?.get('secondValue')?.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="formGroup?.get('secondValue')?.hasError('min')">Value must be positive</mat-error>
+            <mat-error *ngIf="formGroup.get('secondValue')?.hasError('pattern')">Value must be a number</mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <mat-form-field>
+            <mat-label class="mat-label">Acceleration</mat-label>
+            <input matInput formControlName="thirdValue" name="inputData.acceleration">
+            <mat-error *ngIf="formGroup?.get('thirdValue')?.hasError('min')">Value must be positive</mat-error>
+            <mat-error *ngIf="formGroup.get('thirdValue')?.hasError('pattern')">Value must be a number</mat-error>
+          </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <mat-form-field>
+            <mat-label class="mat-label">Pitch</mat-label>
+            <input matInput formControlName="fourthValue" name="inputData.pitch">
+            <mat-error *ngIf="formGroup.get('fourthValue')?.hasError('min')">Value must be positive</mat-error>
+            <mat-error *ngIf="formGroup.get('fourthValue')?.hasError('pattern')">Value must be a number</mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext (click)="setValuesAndMakeRequests()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="Gear Prediction Diagnose" [completed]="isDiagnoseCompleted">
+        <div>
+            <mat-grid-list cols="2" rowHeight="1:0.75">
+              <mat-grid-tile>
+                <mat-grid-tile-header>
+                  <span>Drools Information:</span>
+                  <div class="right-buttons">
+                    <button mat-button (click)="droolsExplanationFetch()">Explanation Module</button>
+                    <button mat-button (click)="droolsGearPredictionFetch()">Gear Diagnose without Fuzzy</button>
+                    <button mat-button (click)="droolsFuzzyGearPredictionFetch()">Gear Diagnose with Fuzzy</button>
+                  </div>
+                </mat-grid-tile-header>
+                <div rows="6" cols="30" readonly class="read-only-textarea" style="overflow-y: scroll; height:400px;">
+                  <p *ngFor="let gear of this.droolsResponse">{{gear}}</p>
+                  <ng-template [ngIf]="this.droolsExplanation">
+                    <div *ngFor="let explanation of this.droolsExplanation">
+                      <p><b>Prediction: </b>{{explanation?.conclusion?.description}}</p>
+                      <p> <b>Evidences: </b> {{explanation?.lhs}}</p>
+                      <p> <b>Rules Fired: </b> {{explanation?.rule}}</p>
+                    </div>
+                  </ng-template>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <mat-grid-tile-header>
+                  <span>Prolog Information:</span>
+                  <div class="right-buttons">
+                    <button mat-button (click)="prologExplanationFetch()">Explanation Module</button>
+                    <button mat-button (click)="prologWhyNotFetch()">Why not Module</button>
+                    <button mat-button (click)="prologGearPredictionFetch()">Gear Diagnose</button>
+                  </div>
+                </mat-grid-tile-header>
+                <div rows="6" cols="30" readonly class="read-only-textarea" style="overflow-y: scroll; height:400px;">
+                  <ng-template [ngIf]="this.prologResponse">
+                    <p>The suggested gear is: {{this.prologResponse.gear[0]}}</p>
+                  </ng-template>
+                  <ng-template [ngIf]="this.prologExplanation">
+                    <div *ngFor="let explanation of this.prologExplanation">
+                      <p>{{explanation}}</p>
+                    </div>
+                  </ng-template>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-stepper>

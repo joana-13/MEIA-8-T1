@@ -1,0 +1,39 @@
+/* toolbar.component.scss */
+
+.custom-toolbar {
+    background: #B0DBF1;
+    color: black; /* Text color */
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5); /* Subtle box shadow */
+    text-align: left; /* Center align text */
+    height: 64px; /* Set the height of the toolbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .right-icon {
+    margin-left: auto;
+    background: none;
+    color: inherit; /* Inherit the color from the parent element */
+    text-decoration: none; /* Remove underline for the link */
+    cursor: pointer; /* Show pointer cursor on hover */
+  }
+  
+  /* Optional: Add responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .custom-toolbar {
+      height: 56px; /* Adjust height for smaller screens */
+      font-size: 18px; /* Adjust font size for smaller screens */
+    }
+
+  }
+
+.text-label{
+    margin-left: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}

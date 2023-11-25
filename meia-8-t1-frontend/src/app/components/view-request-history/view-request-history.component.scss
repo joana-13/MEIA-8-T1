@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-table {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  ::ng-deep .mat-paginator {
+    background-color: #f5f5f5; // Replace with your desired background color
+  }

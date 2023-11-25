@@ -1,0 +1,13 @@
+.toolbarNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  text-align: right;
+  padding: 2em;
+  justify-content: flex-end;
+  background: #B0DBF1;
+  font-weight: bold;
+  box-shadow: 2px 2px 4px 5px #ccc;
+}
