@@ -1,0 +1,82 @@
+// Check the documentation: https://jfuzzylogic.sourceforge.net/html/manual.html#runfcl
+
+FUNCTION_BLOCK gear
+
+VAR_INPUT
+    speed : REAL;
+END_VAR
+
+VAR_OUTPUT
+    gear : REAL;    // Output variable for selected gear
+END_VAR
+
+//Define membership functions
+FUZZIFY speed
+    TERM gear1_low := (0, 1) (10, 0);        // Low speed for gear 1
+    TERM gear1_medium := (10, 0) (20, 1) (25, 0); // Medium speed for gear 1
+    TERM gear1_high := (15, 0) (22.5, 1) (30, 0); // High speed for gear 1
+
+    TERM gear2_low := (20, 1) (25, 0) (30, 0); // Low speed for gear 2
+    TERM gear2_medium := (29, 0) (35, 1) (40, 0); // Medium speed for gear 2
+    TERM gear2_high := (39, 0) (45, 0) (50, 1); // High speed for gear 2
+
+    TERM gear3_low := (45, 0) (50, 1) (55, 0); // Low speed for gear 3
+    TERM gear3_medium := (54, 0) (60, 1) (65, 0); // Medium speed for gear 3
+    TERM gear3_high := (64, 0) (70, 1) (75, 0); // High speed for gear 3
+
+    TERM gear4_low := (60, 0) (65, 1) (70, 0); // Low speed for gear 4
+    TERM gear4_medium := (69, 0) (75, 1) (80, 0); // Medium speed for gear 4
+    TERM gear4_high := (79, 0) (85, 1) (90, 0); // High speed for gear 4
+
+    TERM gear5_low := (85, 0) (90, 1) (95, 0); // Low speed for gear 5
+    TERM gear5_medium := (94, 0) (100, 1) (105, 0); // Medium speed for gear 5
+    TERM gear5_high := (104, 0) (110, 1) (120, 1); // High speed for gear 5
+END_FUZZIFY
+
+// Here we are using gauss: mean standard_deviation for each speed rate on each gear
+DEFUZZIFY gear
+    TERM GEAR_1 := (0, 1) (10, 1) (25, 0);
+    TERM GEAR_2 := (20, 0) (40, 1) (60, 0);
+    TERM GEAR_3 := (45, 0) (65, 1) (85, 0);
+    TERM GEAR_4 := (60, 0) (80, 1) (100, 0);
+    TERM GEAR_5 := (85, 0) (105, 1) (120, 1);
+    METHOD : COG;
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+    AND : MIN;
+    ACT : MIN;
+    ACCU : MAX;
+
+    // Gear 1 rules
+    RULE 1 : IF speed IS gear1_low THEN gear IS GEAR_1 WITH 1;
+    RULE 2 : IF speed IS gear1_medium THEN gear IS GEAR_1 WITH 0.8;
+    RULE 3 : IF speed IS gear1_high THEN gear IS GEAR_1 WITH 0.7;
+
+    // Gear 2 rules
+    RULE 4 : IF speed IS gear2_low THEN gear IS GEAR_2 WITH 0.7;
+    RULE 5 : IF speed IS gear2_medium THEN gear IS GEAR_2 WITH 1;
+    RULE 6 : IF speed IS gear2_high THEN gear IS GEAR_2 WITH 0.8;
+
+    // Gear 3 rules
+    RULE 7 : IF speed IS gear3_low THEN gear IS GEAR_3 WITH 0.2;
+    RULE 8 : IF speed IS gear3_medium THEN gear IS GEAR_3 WITH 1;
+    RULE 9 : IF speed IS gear3_high THEN gear IS GEAR_3 WITH 0.6;
+
+    // Gear 4 rules
+    RULE 10 : IF speed IS gear4_low THEN gear IS GEAR_4 WITH 0.8;
+    RULE 11 : IF speed IS gear4_medium THEN gear IS GEAR_4 WITH 1;
+    RULE 12 : IF speed IS gear4_high THEN gear IS GEAR_4 WITH 0.7;
+
+    // Gear 5 rules
+    RULE 13 : IF speed IS gear5_low THEN gear IS GEAR_5 WITH 0.6;
+    RULE 14 : IF speed IS gear5_medium THEN gear IS GEAR_5 WITH 1;
+    RULE 15 : IF speed IS gear5_high THEN gear IS GEAR_5 WITH 0.8;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
+
+
+
+

@@ -1,0 +1,15 @@
+### Send POST request with vehicle data
+POST http://localhost:8081/api/drools
+Content-Type: application/json
+
+{
+  "speed": 150,
+  "rpm": 1000,
+  "pitch": 4,
+  "totalAcceleration": 2,
+  "carLoad": 55
+}
+
+### Send GET to obtain explanations
+GET http://localhost:8081/api/drools/explanations
+Content-Type: application/json

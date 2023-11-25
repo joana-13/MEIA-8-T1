@@ -1,0 +1,282 @@
+dialect "mvel"
+
+import isep.ipp.pt.model.Conclusions;
+import isep.ipp.pt.model.Evidence;
+
+
+query "Conclusions"
+    $conclusion : Conclusions()
+end
+
+rule "rule"
+    when
+        Evidence(rpm <= 1198.55, speed <= 9.391)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+rule "rule 0"
+    when
+        Evidence(rpm <= 1198.55, speed <= 9.391)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_1);
+        insert(c);
+end
+
+rule "rule 1"
+    when
+        Evidence(rpm > 1198.55, speed <= 14.327)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_1);
+        insert(c);
+end
+
+rule "rule 2"
+    when
+        Evidence(speed > 14.726, rpm > 1642.55, speed <= 20.013)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_1);
+        insert(c);
+end
+
+rule "rule 3"
+    when
+        Evidence(speed > 0, rpm > 1198.55, speed <= 14.726)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_1);
+        insert(c);
+end
+
+// GEAR_2
+
+rule "rule 4"
+    when
+        Evidence(speed <= 30.9, speed > 20.013, rpm > 1642.55)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+rule "rule 5"
+    when
+        Evidence(speed <= 20.977, speed > 14.726, rpm <= 1642.55)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+rule "rule 6"
+    when
+        Evidence(speed <= 48.818, speed > 30.9, rpm > 2459.05)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+rule "rule 7"
+    when
+        Evidence(speed <= 14.726, rpm <= 1198.55, speed > 9.391)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+rule "rule 8"
+    when
+        Evidence(speed > 54.959, totalAcceleration > 2.0, rpm > 4185.1)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+// GEAR_3
+
+rule "rule 9"
+    when
+        Evidence(speed <= 48.818, speed > 30.9, rpm > 1850.35, rpm <= 2459.05)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 10"
+    when
+        Evidence(speed <= 30.9, speed > 20.977, rpm <= 1642.55)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 11"
+    when
+        Evidence(speed <= 35.338, speed > 30.9, rpm <= 1850.35, rpm > 1471.7)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 12"
+    when
+        Evidence(speed <= 54.959, speed > 48.818, rpm > 2329.65)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 13"
+    when
+        Evidence(speed > 54.959, totalAcceleration > 1.336, totalAcceleration <= 2.0, rpm > 2854.95)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 14"
+    when
+        Evidence(speed > 54.959, totalAcceleration <= 0.782, speed <= 61.943, rpm > 2594.85)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 15"
+    when
+        Evidence(speed > 54.959, totalAcceleration > 2.0, rpm <= 4185.1)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+// GEAR_4
+
+rule "rule 16"
+    when
+        Evidence(speed <= 49.624, speed > 35.338, rpm <= 1850.35)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 17"
+    when
+        Evidence(speed <= 54.959, speed > 48.818, rpm > 1850.35, rpm <= 2329.65)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 18"
+    when
+        Evidence(speed > 61.943, totalAcceleration <= 0.782, rpm > 2314.45, speed <= 76.801)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 19"
+    when
+        Evidence(speed > 54.959, totalAcceleration <= 0.782, speed <= 61.943, rpm > 1961.25, rpm <= 2594.85)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 20"
+    when
+        Evidence(speed > 54.959, totalAcceleration > 0.782, totalAcceleration <= 1.336, rpm > 2185.45, speed <= 87.968)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 21"
+    when
+        Evidence(speed <= 35.338, speed > 30.9, rpm <= 1850.35, rpm <= 1471.7)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 22"
+    when
+        Evidence(speed > 54.959, totalAcceleration > 0.782, totalAcceleration <= 1.336, rpm <= 2185.45, speed <= 58.365)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 23"
+    when
+        Evidence(speed > 54.959, totalAcceleration > 1.336, totalAcceleration <= 2.0, rpm <= 2854.95)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+// GEAR_5
+
+rule "rule 24"
+    when
+        Evidence(speed > 61.943, totalAcceleration <= 0.782, rpm <= 2314.45, pitch <= 5.592)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 25"
+    when
+        Evidence(speed > 76.801, totalAcceleration <= 0.782, rpm > 2314.45)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 26"
+    when
+        Evidence(speed > 54.959, totalAcceleration <= 0.782, speed <= 61.943, rpm <= 1961.25)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 27"
+    when
+        Evidence(speed <= 54.959, speed > 49.624, rpm <= 1850.35)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 28"
+    when
+        Evidence(speed > 87.968, totalAcceleration > 0.782, totalAcceleration <= 1.336, rpm > 2185.45)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 29"
+    when
+        Evidence(speed > 58.365, totalAcceleration > 0.782, totalAcceleration <= 1.336, rpm <= 2185.45)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 30"
+    when
+        Evidence(speed > 61.943, totalAcceleration <= 0.782, rpm <= 2314.45, pitch > 5.592)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "unknown"
+    when
+        not Conclusions()
+    then
+        Conclusions c = new Conclusions(Conclusions.UNKNOWN);
+        insert(c);
+end
+

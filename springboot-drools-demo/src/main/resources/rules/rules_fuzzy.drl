@@ -1,0 +1,157 @@
+dialect "mvel"
+
+import isep.ipp.pt.model.Conclusions;
+import isep.ipp.pt.model.Evidences;
+
+
+query "Conclusions"
+    $conclusion : Conclusions()
+end
+
+
+rule "rule 1"
+    when
+        Evidences(fuzzyMembershipGear1 >= 0.4)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_1);
+        insert(c);
+end
+
+// GEAR_2
+
+rule "rule 2"
+    when
+        Evidences(fuzzyMembershipGear2 >= 0.4)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+rule "rule 3"
+    when
+        Evidences(fuzzyMembershipGear2 >= 0.4, totalAcceleration > 2.0)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_2);
+        insert(c);
+end
+
+// GEAR_3
+
+rule "rule 4"
+    when
+        Evidences(fuzzyMembershipGear3 >= 0.4)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+
+rule "rule 5"
+    when
+        Evidences(fuzzyMembershipGear3 >= 0.4, totalAcceleration > 1.336, totalAcceleration <= 2.0)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 6"
+    when
+        Evidences(fuzzyMembershipGear3 >= 0.4, totalAcceleration <= 0.782)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+rule "rule 7"
+    when
+        Evidences(fuzzyMembershipGear3 >= 0.4, totalAcceleration > 2.0)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_3);
+        insert(c);
+end
+
+// GEAR_4
+
+rule "rule 8"
+    when
+        Evidences(fuzzyMembershipGear4 >= 0.4)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 9"
+    when
+        Evidences(fuzzyMembershipGear4 >= 0.4, totalAcceleration <= 0.782)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+rule "rule 10"
+    when
+        Evidences(fuzzyMembershipGear4 >= 0.4, totalAcceleration > 0.782, totalAcceleration <= 1.336)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+
+rule "rule 11"
+    when
+        Evidences(fuzzyMembershipGear4 >= 0.4, totalAcceleration > 1.336, totalAcceleration <= 2.0)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_4);
+        insert(c);
+end
+
+// GEAR_5
+
+rule "rule 12"
+    when
+        Evidences(fuzzyMembershipGear5 >= 0.4, totalAcceleration <= 0.782, pitch <= 5.592)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 13"
+    when
+        Evidences(fuzzyMembershipGear5 >= 0.4, totalAcceleration <= 0.782)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 14"
+    when
+        Evidences(fuzzyMembershipGear5 >= 0.4)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 15"
+    when
+        Evidences(fuzzyMembershipGear5 >= 0.4, totalAcceleration > 0.782, totalAcceleration <= 1.336)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "rule 16"
+    when
+        Evidences(fuzzyMembershipGear5 >= 0.4, totalAcceleration <= 0.782, pitch > 5.592)
+    then
+        Conclusions c = new Conclusions(Conclusions.GEAR_5);
+        insert(c);
+end
+
+rule "unknown"
+    when
+        not Conclusions()
+    then
+        Conclusions c = new Conclusions(Conclusions.UNKNOWN);
+        insert(c);
+end
+
